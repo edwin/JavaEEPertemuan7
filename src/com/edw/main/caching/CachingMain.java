@@ -4,6 +4,7 @@ import com.edw.bean.Dosen;
 import com.edw.bean.Matakuliah;
 import com.edw.util.HiberUtil;
 import java.util.Date;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 
 
@@ -29,6 +30,8 @@ import org.hibernate.Session;
  */
 public class CachingMain {
 
+    private Logger logger = Logger.getLogger(this.getClass());
+    
     public CachingMain() {
     }
 
@@ -50,9 +53,11 @@ public class CachingMain {
                 Dosen dosen = (Dosen)session.load(Dosen.class, "321");
 
                 // print
-                System.out.println("dosen "+dosen.getNamadosen());
-                System.out.println("Time : " + (new Date().getTime() - now) + " ms");
-
+                logger.debug("\t======================");
+                logger.debug("\tdosen  >>>> "+dosen.getNamadosen());
+                logger.debug("\tTime  >>>> " + (new Date().getTime() - now) + " ms");
+                logger.debug("\t======================");
+                
                 // sleep for 3seconds
                 Thread.sleep(3000);
             }
@@ -86,9 +91,11 @@ public class CachingMain {
                 Matakuliah matakuliah = (Matakuliah)session.load(Matakuliah.class, "123");
 
                 // print
-                System.out.println("matakuliah "+matakuliah.getNamamatakuliah());
-                System.out.println("Time : " + (new Date().getTime() - now) + " ms");
-
+                logger.debug("\t======================");
+                logger.debug("\tmatakuliah >>>> "+matakuliah.getNamamatakuliah());
+                logger.debug("\tTime  >>>> " + (new Date().getTime() - now) + " ms");
+                logger.debug("\t======================");
+                
                 // sleep for 3seconds
                 Thread.sleep(3000);
             }
