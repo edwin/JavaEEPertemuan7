@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 25, 2011 3:23:27 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class catalog="kampus" name="com.edw.bean.Matakuliah" table="matakuliah" 
+        optimistic-lock="all" dynamic-update="true" dynamic-insert="true">
+
+    <!-- caching configuration -->
+    <cache usage="read-write" />
+    
+    <id name="kodematakuliah" type="string">
+      <column length="10" name="kodematakuliah"/>
+      <generator class="assigned"/>
+    </id>
+   
+    <many-to-one class="com.edw.bean.Dosen" fetch="select" name="dosen">
+      <column length="10" name="iddosen" not-null="true"/>
+    </many-to-one>
+    <property name="namamatakuliah" type="string">
+      <column length="20" name="namamatakuliah"/>
+    </property>       
+  </class>
+</hibernate-mapping>

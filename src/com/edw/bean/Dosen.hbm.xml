@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 25, 2011 3:23:27 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  
+  <class catalog="kampus" name="com.edw.bean.Dosen" table="dosen">
+    <id name="iddosen" type="string">
+      <column length="10" name="iddosen"/>
+      <generator class="assigned"/>
+    </id>
+
+    <property name="namadosen" type="string">
+      <column length="20" name="namadosen"/>
+    </property>
+    <set inverse="true" name="matakuliahs">
+      <key>
+        <column length="10" name="iddosen" not-null="true"/>
+      </key>
+      <one-to-many class="com.edw.bean.Matakuliah"/>
+    </set>
+  </class>
+</hibernate-mapping>
